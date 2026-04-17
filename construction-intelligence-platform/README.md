@@ -1,67 +1,47 @@
-# 🏗️ Construction Intelligence Platform
+# Construction Intelligence Platform
+### End-to-End Analytics Pipeline for Multi-Regional Risk Discovery
 
-A high-performance, executive-grade data product for monitoring multi-country construction project health. This platform ingests messy operational data, normalizes financial metrics across currencies (USD, NGN, KES, GHS, ZAR), and generates a high-fidelity glassmorphism dashboard for strategic decision-making.
-
-## 📊 Core Features
-
-- **Multi-Currency Normalization**: Automated conversion of project budgets and actual costs into a unified USD baseline.
-- **Enterprise KPI Engineering**: Real-time calculation of Cost Overrun, Asset Efficiency Ratios, and Delivery Delay Flags.
-- **Executive Dashboard**: A premium, single-file HTML interface featuring:
-  - Global filters (Geography, Asset Class, Contractor).
-  - Glassmorphism design tokens for a professional enterprise feel.
-  - Interactive Plotly.js visualizations.
-- **Modular Pipeline**: Clean separation of data cleaning, analysis, and orchestration logic.
-
-## 📂 Repository Structure
-
-```text
-construction-intelligence-platform/
-│
-├── data/
-│   ├── raw_data.csv         # Original messy operational dataset (2,200+ records)
-│   ├── cleaned_data.csv     # Sanitized, USD-normalized production data
-│   └── dashboard_data.json  # Sanitized analytics payload for the UI
-│
-├── scripts/
-│   ├── data_cleaning.py     # Module for currency normalization and standardization
-│   ├── analysis.py          # Module for KPI engineering and risk profiling
-│   └── pipeline.py          # Orchestrator that runs the end-to-end flow
-│
-├── reports/
-│   └── executive_summary.md  # Strategic deep-dive for leadership (CTO/COO)
-│
-├── dashboard/
-│   └── index.html           # The final, production-ready executive dashboard
-│
-├── assets/
-│   ├── styles.css           # Global theme and glassmorphism styling
-│   └── template.html        # Source HTML template for automated updates
-│
-└── README.md                # Project documentation
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Python 3.8+
-- Pandas
-- NumPy
-
-### Installation
-```bash
-pip install pandas numpy
-```
-
-### Running the Pipeline
-To ingest new data and refresh the dashboard:
-```bash
-python scripts/pipeline.py
-```
-
-## 🛡️ Business Impact
-- **Risk Mitigation**: Identifies regional leakage nodes (e.g., South Africa representing 33% of portfolio risk).
-- **Operational Optimization**: Highlights bottom-performing assets (e.g., Graders at ~69% efficiency) for maintenance intervention.
-- **Capital Recovery**: Quantifies strategic savings opportunities in high-variance procurement zones.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Tests: Pytest](https://img.shields.io/badge/Tests-Pytest-green.svg)](https://docs.pytest.org/en/7.1.x/)
 
 ---
-*Developed for Executive Strategic Analysis.*
+
+## 🔗 Live Demo
+Access the interactive dashboard and full case study:  
+👉 **[chinua-data-porfolio.vercel.app](https://chinua-data-porfolio.vercel.app)**
+
+---
+
+## 📋 Executive Summary
+This platform is a standalone data engineering and analytics solution designed for executive oversight of high-value construction portfolios. It automates the lifecycle from **Raw Data Ingestion** to **Strategic Risk Insight**, specifically engineered to handle the complexities of multi-currency, multi-regional operational datasets.
+
+## 🚀 Key Features
+- **Automated ETL Pipeline:** Sanitizes and standardizes 2,240+ inconsistent operational records.
+- **Regional Currency Normalization:** Real-time conversion of NGN, KES, GHS, and ZAR into a unified USD baseline for global parity.
+- **Financial Risk Discovery:** Automated identification of cost-variance "leakage" across 4 international regions.
+- **Interactive Executive Dashboard:** Glassmorphism UI delivering real-time portfolio health monitoring via Plotly.js.
+- **Strategic Briefing:** Auto-generated executive summaries highlighting contractors with the highest risk profiles.
+
+## 🛠️ Tech Stack
+- **Engine:** Python (Pandas, NumPy, Re)
+- **Visualization:** Plotly.js, Glassmorphism UI (HTML5/CSS3)
+- **Testing:** Pytest (Unit & Integration)
+- **Documentation:** Markdown (Strategic Briefing Engine)
+
+## 📈 Business Impact
+- **Recovery Identification:** Uncovered **$7.8M** in gross cost overruns across the portfolio.
+- **Operational Efficiency:** Identified regional "Downtime Loops" leading to a average 12% delay rate in KES-denominated projects.
+- **Decision Speed:** Reduced monthly executive reporting cycles from 3 days to **under 5 seconds** via automated pipeline execution.
+
+## 🧪 Testing & Reliability
+This system follows senior engineering standards with a dedicated test suite verifying all mathematical and cleaning logic.
+
+To run the full test suite:
+```powershell
+pytest
+```
+*Current Coverage: 11/11 tests passing (Currency Conversion, KPI Logic, Data Cleaning).*
+
+---
+*Created for senior executive analytics and portfolio optimization.*

@@ -40,6 +40,25 @@ def parse_date(val):
         except: continue
     return pd.to_datetime(val_str, errors='coerce')
 
+def normalize_quantity(val):
+    if pd.isna(val) or str(val).lower() in ['unknown', 'n/a', 'none', '-']:
+        return np.nan
+    val_str = str(val).lower()
+    num = clean_numeric(val_str)
+    if np.isnan(num): return num
+    for unit, factor in UNIT_MAP.items():
+        if unit in val_str: return num * factor
+    return num
+
+def convert_to_usd(row_val, currency_code):
+    val_str = str(row_val).upper()
+    num = clean_numeric(val_str)
+    if np.isnan(num): return np.nan
+    curr = str(currency_code).strip().upper()
+    for c in CONVERSION_RATES:
+        if c in val_str: curr = c
+    return num * CONVERSION_RATES.get(curr, 1.0)
+
 def clean_dataset(df):
     logger.info("🛠️  Cleaning and standardizing dataset...")
     df = df.copy()
@@ -50,28 +69,11 @@ def clean_dataset(df):
     df['Equipment_Type'] = df['Equipment_Type'].str.capitalize().fillna("Unknown")
     df['Maintenance_Status'] = df['Maintenance_Status'].str.lower().fillna("unknown")
 
-    # 2. Unit Normalization
-    def normalize_quantity(val):
-        val_str = str(val).lower()
-        num = clean_numeric(val_str)
-        if np.isnan(num): return num
-        for unit, factor in UNIT_MAP.items():
-            if unit in val_str: return num * factor
-        return num
-
     df['Quantity_Used_Tons'] = df['Quantity_Used'].apply(normalize_quantity)
 
     # 3. Currency Normalization to USD
-    def get_usd(row, col):
-        val_str = str(row[col]).upper()
-        num = clean_numeric(val_str)
-        curr = str(row['Currency']).strip().upper()
-        for c in CONVERSION_RATES:
-            if c in val_str: curr = c
-        return num * CONVERSION_RATES.get(curr, 1.0)
-
     for col in ['Unit_Cost', 'Project_Budget', 'Actual_Cost']:
-        df[f'{col}_USD'] = df.apply(lambda r: get_usd(r, col), axis=1)
+        df[f'{col}_USD'] = df.apply(lambda r: convert_to_usd(r[col], r['Currency']), axis=1)
 
     # 4. Date Normalization
     for col in ['Start_Date', 'End_Date', 'Actual_Completion_Date']:

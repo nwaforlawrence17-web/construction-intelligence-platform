@@ -9,7 +9,7 @@
 
 ## 🔗 Live Demo
 Access the interactive dashboard and full case study:  
-👉 **[chinua-data-porfolio.vercel.app](https://chinua-data-porfolio.vercel.app)**
+👉 **[chinua-data-portfolio.vercel.app](https://chinua-data-porfolio.vercel.app)**
 
 ---
 

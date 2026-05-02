@@ -13,7 +13,7 @@
 
 ## 🔗 Live Demo
 Access the interactive dashboard and full case study:  
-👉 **[chinua-data-portfolio.vercel.app](https://chinua-data-portfolio.vercel.app/projects.html#project-global-construction-risk)**
+👉 **[chinua-data-portfolio.vercel.app](https://chinua-data-portfolio.vercel.app/projects.html#project-card-global-construction)**
 
 ---
 
